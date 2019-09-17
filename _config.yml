@@ -104,6 +104,8 @@ defaults:
     values:
       layout: single
       author_profile: true
+      
+locale: "zh_CN"
 
 category_archive:
   type: liquid
