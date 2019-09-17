@@ -21,6 +21,8 @@ twitter_username: ssingualrity
 github_username: ssingularity
 minimal_mistakes_skin: air
 search: true
+logo: "assets/images/icon.svg"
+locale: "zh_CN"
 
 # Build settings
 markdown: kramdown
@@ -57,7 +59,7 @@ plugins:
 
 author:
   name   : "皮皮潘"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/avator.svg"
   bio    : "Talk is cheap, Show me the code"
   links:
     - label: "Website"
@@ -104,8 +106,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      
-locale: "zh_CN"
 
 category_archive:
   type: liquid
