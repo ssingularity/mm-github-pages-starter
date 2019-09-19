@@ -9,7 +9,7 @@ tags:
 header:
   teaser: /assets/images/RestTemplate.jpg
 ---
-![image](../assets/images/RestTemplate.jpg)
+![image](/assets/images/RestTemplate.jpg)
 
 在RestTemplate的使用中，我们尽量使用exchange方法，因为通过它可以完成GET，POST所有动作，并把接口统一化了
 
