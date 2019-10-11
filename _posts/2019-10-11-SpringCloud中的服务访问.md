@@ -11,12 +11,16 @@ header:
 ---
 ![image](/assets/images/Spring-Cloud-Gateway.jpg)
 
-最近在对于一个以前写的会议室管理系统进行重构，微服务选型采用了Spring Cloud作为框架，其中使用spring-cloud-gateway作为统一网关替代了zuul，并细致了解了一下服务间调用所用到的一些东西，，在这里就来谈一谈在Spring Cloud框架下一些服务间调用的过程，例如Feign，Ribbon，Hystrix各有什么用，怎么配置，以及为什么要使用spring-cloud-gateway和怎么配置
+最近在对于一个以前写的会议室管理系统进行重构，在进行了一番选型之后决定使用spring-cloud-gateway作为统一网关替代了zuul，同时也对服务间的调用包括熔断、负载均衡以及重试重新深入学习了一下，在这里就总结一下在Spring Cloud框架下一些服务间调用的过程，例如Feign，Ribbon，Hystrix各有什么用，为什么要使用spring-cloud-gateway和各自对应配置
 
 ## Feign、Ribbon和Hystrix
-Hystrix是用来做熔断，它主要在目标服务不可用的时候快速失败，从而防止雪崩，Ribbon是用来做负载均衡的，它通过注册到Eureka的ServiceId来查找并负载均衡对应的服务，Feign用来做注解式服务调用，它简化了服务间调用的方式，并且把Hystrix和Ribbon包含了进来，所以说服务调用的流程是通过Feign开始的，然后Feign先开启Hystrix开始熔断监控以及服务保护，然后Ribbon找到对应的ip，最后开始调用底层的Http框架进行服务调用（Feign把整个服务调用都包含进来了，可以认为Feign有自己的Hystrix和Ribbon，所以只要把Feign导入进来，Hystrix和Ribbon就都有了）。
+- Hystrix是用来做熔断，它主要在目标服务不可用的时候快速失败，从而防止雪崩
+- Ribbon是用来做负载均衡的，它通过注册到Eureka的ServiceId来查找并负载均衡对应的服务
+- Feign用来做注解式服务调用，它简化了服务间调用的方式，并且把Hystrix和Ribbon包含了进来
 
-其中一些值得记录的配置方面的东西是：
+所以说服务调用的流程是通过Feign开始的，然后Feign先开启Hystrix开始熔断监控以及服务保护，然后Ribbon找到对应的ip，最后开始调用底层的Http框架进行服务调用（Feign把整个服务调用都包含进来了，可以认为Feign有自己的Hystrix和Ribbon，所以只要把Feign导入进来，Hystrix和Ribbon就都有了）。
+
+其中一些值得记录的配置是：
 - 可以使用 ribbon.MaxAutoRetries以及ribbon相关配置来实现重试效果（feign底层使用了ribbon），但同时需要加入spring-retry依赖。
 - 这些流程（包括重试、熔断）都是作用在服务调用端的，服务端不care这些
 - 如果要启用Hystrix就要配置feign.hystrix.enabled=true，如果有Retry，则需要注意Hystrix以及ribbon的超时配置，前者应该大于后者
