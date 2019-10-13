@@ -10,7 +10,6 @@ header:
   teaser: /assets/images/Spring-Cloud-Gateway.jpg
 ---
 ![image](/assets/images/Spring-Cloud-Gateway.jpg)
-
 最近在对于一个以前写的会议室管理系统进行重构，在进行了一番选型之后决定使用spring-cloud-gateway作为统一网关替代了zuul，同时也对服务间的调用包括熔断、负载均衡以及重试重新深入学习了一下，在这里就总结一下在Spring Cloud框架下一些服务间调用的过程，例如Feign，Ribbon，Hystrix各有什么用，为什么要使用spring-cloud-gateway和各自对应配置
 
 ## Feign、Ribbon和Hystrix
