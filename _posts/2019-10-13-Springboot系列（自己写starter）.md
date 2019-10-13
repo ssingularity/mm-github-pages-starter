@@ -1,11 +1,11 @@
 ---
-title: "Springboot系列（自己写starter）"
+title: "SpringBoot系列（自己写starter）"
 date: 2019-10-13
 categories:
-  - Springboot
+  - Spring Boot
 tags:
-  - Springboot
-  - java
+  - Spring Boot
+  - Java
 header:
   teaser: /assets/images/AutoConfiguration.jpg
 ---

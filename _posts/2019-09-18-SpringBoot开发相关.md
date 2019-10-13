@@ -2,10 +2,10 @@
 title: "SrpingBoot开发相关"
 date: 2019-09-18
 categories:
-  - Java
+  - Spring Boot
 tags:
   - Java
-  - 开发
+  - Spring Boot
 header:
   teaser: /assets/images/Spring.jpg
 ---
