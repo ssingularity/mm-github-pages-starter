@@ -12,7 +12,7 @@ header:
 ![image](/assets/images/Spring-Security.jpg)
 ## 1.核心组件
 ### 1.1 SecurityContextHolder
-  SecurityContextHolder用于存储安全上下稳（security context）的信息，包括当前用户是谁，他拥有哪些角色权限，这些保存在SecurityContextHolder中
+  SecurityContextHolder用于存储安全上下文（security context）的信息，包括当前用户是谁，他拥有哪些角色权限，这些保存在SecurityContextHolder中
   获取当前用户信息的代码如下：
   ```
   Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -167,3 +167,11 @@ org.springframework.security.web.access.intercept.FilterSecurityInterceptor
 ExceptionTranslationFilter 异常转换过滤器位于整个 springSecurityFilterChain 的后方，用来转换整个链路中出现的异常，将其转化，顾名思义，转化以意味本身并不处理。一般其只处理两大类异常：AccessDeniedException 访问异常和 AuthenticationException 认证异常。
 
 这个过滤器非常重要，因为它将 Java 中的异常和 HTTP 的响应连接在了一起，这样在处理异常时，我们不用考虑密码错误该跳到什么页面，账号锁定该如何，只需要关注自己的业务逻辑，抛出相应的异常便可。如果该过滤器检测到 AuthenticationException，则将会交给内部的 AuthenticationEntryPoint 去处理，如果检测到 AccessDeniedException，需要先判断当前用户是不是匿名用户，如果是匿名访问，则和前面一样运行 AuthenticationEntryPoint，否则会委托给 AccessDeniedHandler 去处理，而 AccessDeniedHandler 的默认实现，是 AccessDeniedHandlerImpl。所以 ExceptionTranslationFilter 内部的 AuthenticationEntryPoint 是至关重要的，顾名思义：认证的入口点。
+
+## 4 自定义
+自定义对应的鉴权验证方式有三种，按照简单到复杂分别是：
+- 提供一个实现了UserDetailsService的类
+- 提供一个自己的AuthenticationProvider
+- 自己去实现UsernamePasswordAuthenticationFilter或者BasicAuthenticationFilter
+
+在实现UsernamePasswordAuthenticationFilter的时候需要注意它的AuthenticationManager可以从外部传进来，也就是在配置类中注册自己的时候通过Bean的方式，将AuthenticationManager通过构造器来进行构造，同时它对应的AuthenticationProvider也在AuthentcationManagerBuilder中进行声明和注册，从而将Filter过程和实际鉴权分成了两块，从框架层面帮助达到了关注点分离
