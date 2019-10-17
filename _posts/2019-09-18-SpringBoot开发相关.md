@@ -1,5 +1,5 @@
 ---
-title: "SrpingBoot开发相关"
+title: "SpringBoot开发相关"
 date: 2019-09-18
 categories:
   - Spring Boot
