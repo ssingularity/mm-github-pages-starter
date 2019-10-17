@@ -168,6 +168,8 @@ ExceptionTranslationFilter 异常转换过滤器位于整个 springSecurityFilte
 
 这个过滤器非常重要，因为它将 Java 中的异常和 HTTP 的响应连接在了一起，这样在处理异常时，我们不用考虑密码错误该跳到什么页面，账号锁定该如何，只需要关注自己的业务逻辑，抛出相应的异常便可。如果该过滤器检测到 AuthenticationException，则将会交给内部的 AuthenticationEntryPoint 去处理，如果检测到 AccessDeniedException，需要先判断当前用户是不是匿名用户，如果是匿名访问，则和前面一样运行 AuthenticationEntryPoint，否则会委托给 AccessDeniedHandler 去处理，而 AccessDeniedHandler 的默认实现，是 AccessDeniedHandlerImpl。所以 ExceptionTranslationFilter 内部的 AuthenticationEntryPoint 是至关重要的，顾名思义：认证的入口点。
 
+配置的登录身份认证失败 handler failureHandler(..) 和 没有进行身份认证的异常 handler authenticationEntryPoint(..)，这两个有区别，前者是在认证过程中出现异常处理，后者是在访问需要进行身份认证的URL时没有进行身份认证异常处理。
+
 ## 4 自定义
 自定义对应的鉴权验证方式有三种，按照简单到复杂分别是：
 - 提供一个实现了UserDetailsService的类
