@@ -8,6 +8,7 @@ tags:
   - SpringSecurity
 header:
   teaser: /assets/images/Spring-Security.jpg
+  image: /assets/images/Spring-Security.jpg
 ---
 ![image](/assets/images/Spring-Security.jpg)
 ## 1.核心组件
