@@ -9,8 +9,9 @@ tags:
 header:
   teaser: /assets/images/Spring-Security.jpg
   image: /assets/images/Spring-Security.jpg
+
 ---
-![image](/assets/images/Spring-Security.jpg)
+
 ## 1.核心组件
 ### 1.1 SecurityContextHolder
   SecurityContextHolder用于存储安全上下文（security context）的信息，包括当前用户是谁，他拥有哪些角色权限，这些保存在SecurityContextHolder中

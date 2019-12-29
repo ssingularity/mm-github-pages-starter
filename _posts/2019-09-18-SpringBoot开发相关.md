@@ -8,8 +8,9 @@ tags:
   - Spring Boot
 header:
   teaser: /assets/images/Spring.jpg
+  image: /assets/images/Spring.jpg
 ---
-![image](/assets/images/Spring.jpg)
+
 ### 在实习过程中学到了很多Spring相关的骚操作,现在总结如下：
 
 - 使用AutowireCapableBeanFactory可以把那些我们自己new的对象，纳入spring控制，从而可以使得内部属性可以被autowired

@@ -8,8 +8,9 @@ tags:
   - Java
 header:
   teaser: /assets/images/AutoConfiguration.jpg
+  image: /assets/images/AutoConfiguration.jpg
 ---
-![image](/assets/images/AutoConfiguration.jpg)
+
 最近在开发一个基于微服务的后台应用，自然而然地就分了多个模块并对于一些在各个服务间需要复用的代码统一放在了公用模块中比如Common模块，Security模块。这些模块通过jar包的形式被其他模块所复用，但于此同时一个问题也就摆在了我的面前：如果被复用的模块中有些类是基于Spring的，那么其中的Configuration以及Bean该怎么才能被注册到使用模块的Spring容器中呢。
 
 一个最简单的想法就是在使用模块中配置一下对应的被使用模块的包名，比如```@ComponentScan("xx.xxx.xx)```,就可以通过扫描的方式把被使用的模块的Bean给纳入控制了，当这个模块只是你自己个人开发的时候到还好说，但是如果你要拿去给别人复用，或者作为libraray难道还要别人专门去看一下你源码里面对应的包名，再自己去配置对应的```@ComponentScan```嘛？这无疑过于麻烦而且不透明，幸运的是SpringBoot本身就提供了对应的自动配置以及透明化的解决方案，而它本身的Springboot家族中的各个starter引用包也是通过相同的方式配置，在这里我也将通过一个简单的例子来演示如何编写自己的starter，不过在此之前，先让我们熟悉一下一些常用的注解。

@@ -8,8 +8,9 @@ tags:
   - RestTemplate
 header:
   teaser: /assets/images/RestTemplate.jpg
+  image: /assets/images/RestTemplate.jpg
 ---
-![image](/assets/images/RestTemplate.jpg)
+
 在RestTemplate的使用中，我们尽量使用exchange方法，因为通过它可以完成GET，POST所有动作，并把接口统一化了
 
 在使用RestTemplate的过程中，我们需要先定义一个HttpHeaders，再定义一个类型为E的payload最后使用HttpHeader以及payload生成HttpEntity<E>

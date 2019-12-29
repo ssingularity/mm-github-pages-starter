@@ -8,8 +8,9 @@ tags:
   - Spring Boot
 header:
   teaser: /assets/images/AOP.jpg
+  image: /assets/images/AOP.jpg
 ---
-![image](/assets/images/AOP.jpg)
+
 在我看来Spring最重要的两大特性一个是IoC另外一个就是AOP了，虽然很早之前就接触过AOP的相关概念，但是一直没有在项目中运用起来，这次决定一定要使用一下这个特性并梳理了这篇博客来记录一下一些相关概念
 
 ## AOP术语定义
