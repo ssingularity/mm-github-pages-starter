@@ -61,3 +61,5 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
 - Spring推荐在构造器上使用@Autowired而不是在Field上
 
 - 所有被注解了如@Configuration、@Component的都会先调用其对应的构造函数来创建对象,同时构造函数中的参数会自动从Spring beanFactory容器中去找到适配的bean来传入
+
+- ObjectProvider提供了更加宽泛的依赖注入，允许对应依赖并不存在，从而使得构造函数的扩展性更好，在AutoConfigure中大量地使用了多参函数配合ObjectProvider作为参数作为Configuration的构造函数
