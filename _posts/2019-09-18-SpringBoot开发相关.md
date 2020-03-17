@@ -57,3 +57,9 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
 - 访问permmitAll的接口的时候，spring security会帮助用户生成一个Anoymonous User的Role
 
 - 可以使用RateLimiter用来做限流（令牌桶，会在1s内均匀的分发令牌）
+
+- Spring推荐在构造器上使用@Autowired而不是在Field上
+
+- 在spring 4.3之后，引入了一个新特性：当构造方法的参数为单个构造参数时，可以不使用@Autowired进行注解
+
+- 所有被注解了如@Configuration、@Component的都会先调用其对应的构造函数来创建对象

@@ -22,7 +22,7 @@ header:
 ## 常用注解
 - ### @ConfigurationProperties
      
-  标有 @ConfigurationProperties 的类的所有属性和配置文件中相关的配置项进行绑定。（默认从全局配置文件中获取配置值），绑定之后我们就可以通过这个类去访问全局配置文件中的属性值了。需要注意这里需要添加@Component的注解来自动注册自己或者@EnableConfigurationProperties(class=xxx.class)注解来主动注册自己，同时需要自己提供Getter和Setter（可以考虑直接用Lombok的@Data）
+  标有 @ConfigurationProperties 的类的所有属性和配置文件中相关的配置项进行绑定。（默认从全局配置文件中获取配置值），绑定之后我们就可以通过这个类去访问全局配置文件中的属性值了。需要注意这里需要添加@Component的注解来自动注册或者在Configuration类上加@EnableConfigurationProperties(class=xxx.class)注解来注册自己，同时需要自己提供Getter和Setter（可以考虑直接用Lombok的@Data）
 
 - ### @Import
 
