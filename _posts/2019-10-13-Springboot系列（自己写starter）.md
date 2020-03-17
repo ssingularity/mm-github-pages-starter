@@ -11,6 +11,10 @@ header:
   image: /assets/images/AutoConfiguration.jpg
 ---
 
+在Springboot中常常可以看到Spring-Boot-Starter-*的包，一开始我傻傻的以为所有对应的配置以及参数都是放在这些包里的，但是当我点开看的时候往往会发现里面什么都没有，只是一个单纯的Pom文件，就很懵。
+
+事实上Spring-Boot它下面对应的各个模块（如Reids，RabbitMQ）的自动配置以及配置属性都是写在Spring-Boot-AutoConfigure这一个Jar包里的，然后通过@Conditional这个注解来做对应的配置激活，而Sping-Boot-Starter-*只是通过Pom导入对应的类来激活这些自动配置，这也就解开了为什么Spring-Boot-Starter-*的包里只有pom文件的疑惑，当然这只是针对Spring-Boot旗下的一系列模块而言的，如果你要实现自己的starter，就请看下文。
+
 最近在开发一个基于微服务的后台应用，自然而然地就分了多个模块并对于一些在各个服务间需要复用的代码统一放在了公用模块中比如Common模块，Security模块。这些模块通过jar包的形式被其他模块所复用，但于此同时一个问题也就摆在了我的面前：如果被复用的模块中有些类是基于Spring的，那么其中的Configuration以及Bean该怎么才能被注册到使用模块的Spring容器中呢。
 
 一个最简单的想法就是在使用模块中配置一下对应的被使用模块的包名，比如```@ComponentScan("xx.xxx.xx)```,就可以通过扫描的方式把被使用的模块的Bean给纳入控制了，当这个模块只是你自己个人开发的时候到还好说，但是如果你要拿去给别人复用，或者作为libraray难道还要别人专门去看一下你源码里面对应的包名，再自己去配置对应的```@ComponentScan```嘛？这无疑过于麻烦而且不透明，幸运的是SpringBoot本身就提供了对应的自动配置以及透明化的解决方案，而它本身的Springboot家族中的各个starter引用包也是通过相同的方式配置，在这里我也将通过一个简单的例子来演示如何编写自己的starter，不过在此之前，先让我们熟悉一下一些常用的注解。
