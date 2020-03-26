@@ -110,3 +110,9 @@ hystrix:
 - Hystrix过滤器主要是开启Hystrix熔断功能，fallbackcmd在后面的hrixtrix.command.fallbackcmd定义并配置了对应的超时时间，fallbackUri是熔断了以后的回调方法，也即访问gateway对应的uri，这里需要自己去定义
 - Retry过滤器主要是开启了重试功能，series字段定义了在什么情况下进行重试，默认是5xx
 - RewritePath过滤器是在请求转发的时候进行Uri的重写，不然会原样转发到对应服务，造成Uri不匹配
+
+#### GatewayFilterFactory
+
+过滤器允许以某种方式修改传入的HTTP请求或传出的HTTP响应。过滤器可以限定作用在某些特定请求路径上。 Spring Cloud Gateway包含许多内置的GatewayFilter工厂。
+
+GatewayFilter工厂Predicate工厂类似，都是在配置文件application.yml中配置，遵循了约定大于配置的思想，只需要在配置文件配置GatewayFilter Factory的名称，而不需要写全部的类名，比如AddRequestHeaderGatewayFilterFactory只需要在配置文件中写AddRequestHeader，而不是全部类名。在配置文件中配置的GatewayFilter Factory最终都会相应的过滤器工厂类处理。
