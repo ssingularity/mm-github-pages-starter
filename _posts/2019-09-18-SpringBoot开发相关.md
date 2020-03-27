@@ -75,3 +75,5 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
   6. InitializingBean.afterPropertiesSet
   7. initMethod声明的方法
   8. BeanPostProcessor.postProcessAfterInitialization
+
+- Spring初始化Bean时先根据所有的Bean生成BeanDefinition列表，在BeanDefinition中会有Bean定义的信息包括DepenOn信息（这时候因为不需要初始化只是登记信息，所以Depend的Bean还没有被发现都没有关系），在所有的BeanDefinition都整理好后，更具BeanDefinition列表来初始化所有的Bean，这时候如果有DependOn则会先递归初始化依赖的Bean
