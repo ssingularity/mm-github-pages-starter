@@ -66,7 +66,7 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
 
 - @ConfiguarionProperties有三种方式可以激活:1.在类本身申明为@Component 2.在Configuraion文件中new一个对应的对象返回并声明为Bean 3. 使用@EnableConfigurationProperties（xxx.class），对于这3中方法，Properties具体的值都会在初始化之后由ConfiguraionPropertiesBindingPostProcessor类来绑定
 
-- Bean声明周期：![Bean生命周期](/assets/images/lifecycle.jpg)
+- Bean声明周期：![Bean生命周期](../assets/images/lifecycle.jpg)
   1. 无参构造函数(如果是基于@Bean声明的话，就是@Bean修饰的方法)
   2. populateBean(对于AutoWired的属性进行注入)
   3. Aware相关的接口
@@ -79,3 +79,5 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
 - Spring初始化Bean时先根据所有的Bean生成BeanDefinition列表，在BeanDefinition中会有Bean定义的信息包括DepenOn信息（这时候因为不需要初始化只是登记信息，所以Depend的Bean还没有被发现都没有关系），在所有的BeanDefinition都整理好后，更具BeanDefinition列表来初始化所有的Bean，这时候如果有DependOn则会先递归初始化依赖的Bean
 
 - 可以将@Qulafier和@Bean声明时一起使用，然后在@Autowired的时候加上@Qualifier则会自动注入当时声明Bean时加上@Qulafier的Bean，通过自己创建Annotation并继承Qulafier可以达到相同的效果，已有的例子如：Ribbon负载均衡中使用继承了@Qualifier的@LoadBalanced注解实现了只只对特定RestTemplate（使用@LoadBalanced+@Bean声明）注入Ribbon拦截器。
+
+- 导入自定义位置的参数文件可以使用@PropertySources和@PropertySource指定参数文件位置，搭配@Configuraion来进行导入

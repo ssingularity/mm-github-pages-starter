@@ -58,7 +58,7 @@ header:
   除此之外，对于artifactId, Spring 官方 Starter通常命名为spring-boot-starter-{name} 如 spring-boot-starter-web，Spring官方建议非官方Starter命名应遵循{name}-spring-boot-starter的格式
 
   项目结构如下图所示：
-  ![image](/assets/images/starter项目结构.png)
+  ![image](../assets/images/starter项目结构.png)
 
 - ### 添加maven依赖
   ```

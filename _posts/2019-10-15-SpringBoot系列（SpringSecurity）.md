@@ -69,7 +69,7 @@ header:
 
 ### 1.7 架构概览图
 
-![image](/assets/images/spring-security-architecture.png)
+![image](../assets/images/Spring-Security-Architecture.png)
 
 ## 2.配置文件
 ### 2.1 http配置
