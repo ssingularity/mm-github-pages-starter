@@ -66,7 +66,7 @@ runtimeExceptuin等于uncheckedException也即发生了不一定会死，所以�
 
 - @ConfiguarionProperties有三种方式可以激活:1.在类本身申明为@Component 2.在Configuraion文件中new一个对应的对象返回并声明为Bean 3. 使用@EnableConfigurationProperties（xxx.class），对于这3中方法，Properties具体的值都会在初始化之后由ConfiguraionPropertiesBindingPostProcessor类来绑定
 
-- Bean声明周期：![Bean生命周期](../assets/images/lifecycle.jpg)
+- Bean声明周期：![Bean生命周期](/assets/images/lifecycle.jpg)
   1. 无参构造函数(如果是基于@Bean声明的话，就是@Bean修饰的方法)
   2. populateBean(对于AutoWired的属性进行注入)
   3. Aware相关的接口
