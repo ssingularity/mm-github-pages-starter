@@ -2,10 +2,10 @@
 title: "SpringBoot系列（SpringSecurity）"
 date: 2019-10-15
 categories:
-  - SpringBoot
+  - Spring Boot
 tags:
-  - SpringBoot
-  - SpringSecurity
+  - Spring Boot
+  - Spring Security
 header:
   teaser: /assets/images/Spring-Security.jpg
   image: /assets/images/Spring-Security.jpg
